@@ -1,0 +1,19 @@
+{
+  "name": "matlhombe",
+  "version": "1.0.0",
+  "description": "Discord pomodoro app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "concurrently \"node src/index.js\"",
+    "deploy": "concurrently \"node src/deploy-commands.js\" \"node src/index.js\""
+  },
+  "author": "Valdo Mpinga && Niel Ganancio",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "mocha": "^10.2.0"
+  }
+}
