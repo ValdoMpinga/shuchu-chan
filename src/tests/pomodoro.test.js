@@ -17,7 +17,6 @@ let isPomodoroActive = false; // Initial state is work
 let remainingTime = WORK_DURATION; // Initial remaining time is work duration
 
 var pomodoroCounter = 1
-let isTimepaused; // Time when the timer was paused
 
 
 
@@ -77,7 +76,7 @@ function startTimer()
         // Execute the interval function every 1 second (1000 milliseconds)
         intervalId = setInterval(() =>
         {
-            if (isTimepaused)
+            if (isTimerPaused)
             {
                 clearInterval(intervalId);
                 return;
