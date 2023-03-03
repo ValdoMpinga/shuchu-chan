@@ -11,7 +11,7 @@ module.exports = {
     async execute(interaction)
     {
         // await interaction.reply("15 secounds pomodoro started!")
-        if (pomodoroActivityDetails.intervalId == null && pomodoroActivityDetails.pomodoroCounter > 1)
+        if (!pomodoroActivityDetails.isTimerPaused)
         {
             switch (true)
             {
@@ -38,7 +38,8 @@ module.exports = {
 
         } else
         {
-            await interaction.reply(currentPomodoroStatus)
+            if (pomodoroActivityDetails.isTimerPaused)
+                await interaction.reply("Timer started, remaining time: " +formatTime(pomodoroActivityDetails.remainingTime));
 
             startTimer()
 
@@ -106,7 +107,6 @@ async function startTimer()
                         // currentState = 'rest';
                         pomodoroActivityDetails.remainingTime = POMODORO_TIMING_DETAILS.LONG_BREAK_DURATION;
                         break;
-
                     // Handle any invalid pomodoro counter values
                     default:
                         console.log(`Invalid pomodoro counter value: ${pomodoroActivityDetails.pomodoroCounter}`);
