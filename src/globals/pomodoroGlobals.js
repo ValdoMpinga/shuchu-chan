@@ -10,6 +10,13 @@ const POMODORO_STATUS = {
     LONG_BREAK_STATUS: "Well done, long break time, enjoy it",
 }
 
+const POMODORO_SKIP_CODES = {
+    CURRENT: 0,
+    ONE_PERIOD: 1,
+    TWO_PERIODS: 2,
+    THREE_PERIODS: 3
+}
+
 let pomodoroActivityDetails = {
     isTimerPaused: true,
     isPomodoroActive: false,
@@ -17,7 +24,7 @@ let pomodoroActivityDetails = {
     pomodoroTimerintervalId: null,
     followUpTimerintervalId: null,
     remainingTime: POMODORO_TIMING_DETAILS.WORK_DURATION,
-    currentPomodoroStatus : POMODORO_STATUS.WORK_TIME_STATUS
+    currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails }
