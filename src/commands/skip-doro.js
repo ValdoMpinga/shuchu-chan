@@ -9,7 +9,7 @@ const { pomodoroPeriodIdentifier } = require('../helpers/pomodoroHelpers/pomodor
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('skip-doro')
-        .setDescription('Skips the ongoing timer.\nyou can skip the current timer or n periods')
+        .setDescription('Skips the ongoing timer. You can skip the current timer or n periods')
         .addIntegerOption(option =>
             option.setName('target')
                 .setDescription('Targets to skip')
