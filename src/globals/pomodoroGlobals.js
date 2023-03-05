@@ -10,6 +10,13 @@ const POMODORO_STATUS = {
     LONG_BREAK_STATUS: "Well done, long break time, enjoy it",
 }
 
+const POMODORO_PERIODS = {
+    FIRST_PERIOD: "first period",
+    SECOND_PERIOD: "second period",
+    THIRD_PERIOD: "third period",
+    FORTH_PERIOD: "forth period",
+}
+
 const POMODORO_SKIP_CODES = {
     CURRENT: 0,
     ONE_PERIOD: 1,
@@ -27,4 +34,4 @@ let pomodoroActivityDetails = {
     currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails }

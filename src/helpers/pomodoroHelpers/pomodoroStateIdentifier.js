@@ -1,6 +1,6 @@
 const { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
 
-function pomodoroStateIdentifier(counter)
+module.exports = function pomodoroStateIdentifier(counter)
 {
     switch (true)
     {
@@ -20,5 +20,3 @@ function pomodoroStateIdentifier(counter)
             return POMODORO_STATUS.WORK_TIME_STATUS
     }
 }
-
-module.exports = { pomodoroStateIdentifier }

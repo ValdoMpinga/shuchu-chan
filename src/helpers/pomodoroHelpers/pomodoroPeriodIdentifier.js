@@ -1,6 +1,6 @@
 const { pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
 
-function pomodoroPeriodIdentifier()
+module.exports = function pomodoroPeriodIdentifier()
 {
     switch (true)
     {
@@ -18,5 +18,3 @@ function pomodoroPeriodIdentifier()
 
     }
 }
-
-module.exports = { pomodoroPeriodIdentifier }

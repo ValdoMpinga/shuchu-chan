@@ -3,7 +3,8 @@ const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { POMODORO_SKIP_CODES, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const pomodoroStatusUpdater = require('../helpers/pomodoroHelpers/pomodoroStatusUpdater')
 const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
-
+const pomodoroPeriodIdentifier = require('../helpers/pomodoroHelpers/pomodoroPeriodIdentifier')
+const pomodoroPeriodSkipper = require('../helpers/pomodoroHelpers/pomodoroPeriodSkipper')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -40,9 +41,8 @@ module.exports = {
                     {
                         pauseTimer()
                         pomodoroActivityDetails.pomodoroCounter++
-                        pomodoroStatusUpdater()         
+                        pomodoroStatusUpdater()
                         await interaction.reply('Pomodoro section skipped successfully!')
-
                     }
                 } else if (pomodoroActivityDetails.pomodoroCounter === 8)
                 {
@@ -52,17 +52,20 @@ module.exports = {
                 }
                 break;
             case POMODORO_SKIP_CODES.ONE_PERIOD:
+                let period_one_output = pomodoroPeriodSkipper(selectedOption)
+                await interaction.reply(period_one_output)
+
                 break;
             case POMODORO_SKIP_CODES.TWO_PERIODS:
+                let period_two_output = pomodoroPeriodSkipper(selectedOption)
+                await interaction.reply(period_two_output)
+
                 break;
             case POMODORO_SKIP_CODES.THREE_PERIODS:
+                let period_three_output = pomodoroPeriodSkipper(selectedOption)
+                await interaction.reply(period_three_output)
+
                 break;
         }
-
-        // console.log(interaction.options.getInteger('target'));
-        // if (!pomodoroActivityDetails.isTimerPaused)
-        //     console.log('do smtn');
-
-        // await interaction.reply("skipped")
     },
 };
