@@ -14,7 +14,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
             switch (periodsToSkip)
             {
                 case 1:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
@@ -25,6 +25,8 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
                         pomodoroStatusUpdater()
                     } else
                     {
+                        pomodoroActivityDetails.isPomodoroActive = true
+
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
                             pomodoroActivityDetails.pomodoroCounter += 2
                         else if (pomodoroActivityDetails.pomodoroCounter == 2)
@@ -35,7 +37,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
 
                     return pomodoroSkipOutput
                 case 2:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
@@ -46,6 +48,8 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
                         pomodoroStatusUpdater()
                     } else
                     {
+                        pomodoroActivityDetails.isPomodoroActive = true
+
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
                             pomodoroActivityDetails.pomodoroCounter += 4
                         else if (pomodoroActivityDetails.pomodoroCounter == 2)
@@ -55,7 +59,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
                     }
                     return pomodoroSkipOutput
                 case 3:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
@@ -66,6 +70,9 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
                         pomodoroStatusUpdater()
                     } else
                     {
+                        pomodoroActivityDetails.isPomodoroActive = true
+
+                    
                         if (pomodoroActivityDetails.pomodoroCounter == 1)
                             pomodoroActivityDetails.pomodoroCounter += 6
                         else if (pomodoroActivityDetails.pomodoroCounter == 2)
@@ -80,7 +87,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
             switch (periodsToSkip)
             {
                 case 1:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 3)
@@ -100,7 +107,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
                     }
                     return pomodoroSkipOutput
                 case 2:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 3)
@@ -127,7 +134,7 @@ module.exports = function pomodoroPeriodSkipper(periodsToSkip)
             switch (periodsToSkip)
             {
                 case 1:
-                    if (pomodoroActivityDetails.isTimerPaused)
+                    if (!pomodoroActivityDetails.isTimerPaused)
                     {
                         pauseTimer()
                         if (pomodoroActivityDetails.pomodoroCounter == 5)

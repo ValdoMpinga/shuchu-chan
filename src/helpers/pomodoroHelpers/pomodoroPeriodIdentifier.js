@@ -14,7 +14,7 @@ module.exports = function pomodoroPeriodIdentifier()
         case pomodoroActivityDetails.pomodoroCounter > 6:
             return "forth period"
         default:
-            return "first period"
+            return "a unknown period, report bug to the developers: valdompinga57@gmail.com"
 
     }
 }

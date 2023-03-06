@@ -2,7 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const startTimer = require('../helpers/pomodoroHelpers/startTimer')
-
+const replyEmbed = require('../embeds/reply-embeds')
+const pomodoroStateIdentifier = require('../helpers/pomodoroHelpers/pomodoroStateIdentifier')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('start-doro')
@@ -35,13 +36,13 @@ module.exports = {
             }
         } else
         {
-            await interaction.reply("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime));
+            await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())]});
 
             startTimer()
 
             pomodoroActivityDetails.followUpTimerintervalId = setTimeout(() =>
             {
-                interaction.followUp(pomodoroActivityDetails.currentPomodoroStatus);
+                interaction.followUp({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining break time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)]});
             }, pomodoroActivityDetails.remainingTime + 1000)
         }
     },
