@@ -20,6 +20,10 @@ for (const file of commandFiles)
   client.commands.set(command.data.name, command);
 }
 
+client.on('debug', console.log);
+client.on('warn', console.warn);
+client.on('error', console.error);
+
 client.once(Events.ClientReady, () =>
 {
   console.log("Ready!");
