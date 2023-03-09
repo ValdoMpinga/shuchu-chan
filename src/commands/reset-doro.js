@@ -5,21 +5,27 @@ const { pomodoroStateIdentifier } = require('../helpers/pomodoroHelpers/pomodoro
 const pomodoroReseter = require('../helpers/pomodoroHelpers/pomodoroReseter')
 
 
-
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('reset-doro')
-        .setDescription('Resets the pomodoro'),
-    async execute(interaction)
-    {
-        if (pomodoroActivityDetails.isPomodoroActive)
+try
+{
+    module.exports = {
+        data: new SlashCommandBuilder()
+            .setName('reset-doro')
+            .setDescription('Resets the pomodoro'),
+        async execute(interaction)
         {
-            pomodoroReseter()
-            await interaction.reply("Pomodoro has been reset!")
+            if (pomodoroActivityDetails.isPomodoroActive)
+            {
+                pomodoroReseter()
+                await interaction.reply("Pomodoro has been reset!")
 
-        } else
-            await interaction.reply("You cant reset a pomodoro that isnt currently active.")
+            } else
+                await interaction.reply("You cant reset a pomodoro that isnt currently active.")
 
-            
-    },
-};
+
+        },
+    };
+} catch (e)
+{
+    console.log(e);
+}
+

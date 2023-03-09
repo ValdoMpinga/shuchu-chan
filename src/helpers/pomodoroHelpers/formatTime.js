@@ -7,6 +7,12 @@ module.exports = function formatTime(ms)
 
 function padZero(num)
 {
-    return num < 10 ? `0${num}` : num;
+    try
+    {
+        return num < 10 ? `0${num}` : num;
+    } catch (e)
+    {
+        console.log(e);
+    }
 }
 

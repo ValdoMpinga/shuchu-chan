@@ -2,7 +2,13 @@ const { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails } = re
 
 module.exports = async function pauseTimer()
 {
-    pomodoroActivityDetails.isTimerPaused = true;
-    clearInterval(pomodoroActivityDetails.pomodoroTimerintervalId);
-    clearInterval(pomodoroActivityDetails.followUpTimerintervalId);
+    try
+    {
+        pomodoroActivityDetails.isTimerPaused = true;
+        clearInterval(pomodoroActivityDetails.pomodoroTimerintervalId);
+        clearInterval(pomodoroActivityDetails.followUpTimerintervalId);
+    } catch (e)
+    {
+        console.log(e);
+    }
 }
