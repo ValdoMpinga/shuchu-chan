@@ -1,9 +1,7 @@
 const { SlashCommandBuilder, ApplicationCommandOptionType } = require('discord.js');
-const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { POMODORO_SKIP_CODES, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const pomodoroStatusUpdater = require('../helpers/pomodoroHelpers/pomodoroStatusUpdater')
 const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
-const pomodoroPeriodIdentifier = require('../helpers/pomodoroHelpers/pomodoroPeriodIdentifier')
 const pomodoroPeriodSkipper = require('../helpers/pomodoroHelpers/pomodoroPeriodSkipper')
 
 try

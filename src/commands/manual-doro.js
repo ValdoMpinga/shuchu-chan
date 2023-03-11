@@ -1,10 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const formatTime = require('../helpers/pomodoroHelpers/formatTime')
-const { POMODORO_STATUS, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const { COLORS } = require('../globals/colors')
-
 const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
-const replyEmbed = require('../embeds/reply-embeds')
 
 
 try

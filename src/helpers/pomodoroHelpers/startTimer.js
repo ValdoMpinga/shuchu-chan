@@ -1,6 +1,7 @@
-const { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
+const { pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
 const formatTime = require('../../helpers/pomodoroHelpers/formatTime')
 const pomodoroStatusUpdater = require('../../helpers/pomodoroHelpers/pomodoroStatusUpdater')
+const ms = require('ms');
 
 module.exports = async function startTimer()
 {
@@ -9,8 +10,8 @@ module.exports = async function startTimer()
         // Set the start time based on the remaining time
         pomodoroActivityDetails.isPomodoroActive = true
         pomodoroActivityDetails.isTimerPaused = false
-        startTime = Date.now() - pomodoroActivityDetails.remainingTime;
-
+        let timeInSeconds = 0
+        
         // Execute the interval function every 1 second (1000 milliseconds)
         pomodoroActivityDetails.pomodoroTimerintervalId = setInterval(() =>
         {
@@ -22,7 +23,7 @@ module.exports = async function startTimer()
             }
 
             // Subtract 1 second from the remaining time
-            pomodoroActivityDetails.remainingTime = pomodoroActivityDetails.remainingTime - 1000;
+            pomodoroActivityDetails.remainingTime = pomodoroActivityDetails.remainingTime - ms('1s');
 
             // Check if the remaining time is 0 or negative
             if (pomodoroActivityDetails.remainingTime <= 0)
@@ -36,9 +37,13 @@ module.exports = async function startTimer()
 
                 pomodoroStatusUpdater()
             }
+            timeInSeconds = Math.floor(pomodoroActivityDetails.remainingTime/60)
 
-            !pomodoroActivityDetails.isTimerPaused ? console.log(`Remaining time: ${formatTime(pomodoroActivityDetails.remainingTime)}`) : console.log("Timer completed");
-        }, 1000);
+            !pomodoroActivityDetails.isTimerPaused ?
+                console.log(`Remaining time: ${formatTime(pomodoroActivityDetails.remainingTime)}`) 
+                :
+                console.log("Timer completed");
+        }, ms('1s'));
     } catch (e)
     {
         console.log(e);

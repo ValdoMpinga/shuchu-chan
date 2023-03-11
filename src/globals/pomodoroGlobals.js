@@ -1,7 +1,9 @@
+const  ms = require('ms');
+
 const POMODORO_TIMING_DETAILS = {
-    WORK_DURATION: 1000,
-    SHORT_BREAK_DURATION: 2000,
-    LONG_BREAK_DURATION: 3000,
+    WORK_DURATION: ms('25m'),
+    SHORT_BREAK_DURATION: ms('5m'),
+    LONG_BREAK_DURATION: ms('20m'),
 }
 
 const POMODORO_STATUS = {

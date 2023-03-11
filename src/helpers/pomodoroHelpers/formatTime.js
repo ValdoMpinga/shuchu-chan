@@ -1,18 +1,16 @@
-module.exports = function formatTime(ms)
+const ms = require('ms'); // Import the 'ms' library
+
+module.exports = function formatTime(timeInMs)
 {
-    let minutes = Math.floor(ms / 1000 / 60);
-    let seconds = Math.floor((ms / 1000) % 60);
-    return `${padZero(minutes)}:${padZero(seconds)}`;
+    const timeInSeconds = Math.floor(timeInMs / 1000);
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    const minuteStr = minutes === 1 ? 'minute' : 'minutes';
+    const secondStr = seconds === 1 ? 'second' : 'seconds';
+    return `${padZero(minutes)} ${minuteStr} : ${padZero(seconds)} ${secondStr}`;
 }
 
 function padZero(num)
 {
-    try
-    {
-        return num < 10 ? `0${num}` : num;
-    } catch (e)
-    {
-        console.log(e);
-    }
+    return num.toString().padStart(2, '0'); // Add leading zero if needed
 }
-

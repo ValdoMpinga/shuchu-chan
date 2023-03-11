@@ -1,7 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const formatTime = require('../helpers/pomodoroHelpers/formatTime')
-const { POMODORO_STATUS, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
-const { pomodoroStateIdentifier } = require('../helpers/pomodoroHelpers/pomodoroStateIdentifier')
+const {  pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const pomodoroReseter = require('../helpers/pomodoroHelpers/pomodoroReseter')
 
 

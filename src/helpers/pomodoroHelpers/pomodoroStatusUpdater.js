@@ -22,7 +22,7 @@ module.exports = function pomodoroStatusUpdater()
 
             // If the counter is even and 8, it's time for a long break
             case pomodoroActivityDetails.pomodoroCounter % 2 === 0 && pomodoroActivityDetails.pomodoroCounter === 8:
-                pomodoroActivityDetails.pomodoroCounter = 1;
+                pomodoroActivityDetails.pomodoroCounter = 0;
                 pomodoroActivityDetails.isPomodoroActive = false
                 console.log(POMODORO_STATUS.LONG_BREAK_STATUS);
                 pomodoroActivityDetails.currentPomodoroStatus = POMODORO_STATUS.LONG_BREAK_STATUS

@@ -1,4 +1,4 @@
-const { POMODORO_TIMING_DETAILS, POMODORO_STATUS, pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
+const { POMODORO_STATUS, pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
 
 module.exports = function pomodoroStateIdentifier(counter)
 {
