@@ -7,11 +7,12 @@ module.exports = function getEmbed(title, description)
     try
     {
         const replyEmbed = new EmbedBuilder()
-            .setColor(COLORS.color4)
-            .setTitle(title)
+        .setTitle(title)
+        .setColor(COLORS.color4)
             .setThumbnail('https://th.bing.com/th/id/OIP.w3AdDIgtXOMPe8BENP-vmgHaHa?pid=ImgDet&w=204&h=204&c=7&dpr=2')
             .setDescription(description)
             .setTimestamp()
+
 
         return replyEmbed
     } catch (e)
