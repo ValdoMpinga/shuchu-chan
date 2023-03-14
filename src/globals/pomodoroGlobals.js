@@ -8,8 +8,8 @@ const ALLOWED_CHANNELS = 'developers-test-ground'
 
 const POMODORO_TIMING_DETAILS = {
     WORK_DURATION: ms('25m'),
-    SHORT_BREAK_DURATION: ms('25m'),
-    LONG_BREAK_DURATION: ms('25m'),
+    SHORT_BREAK_DURATION: ms('5m'),
+    LONG_BREAK_DURATION: ms('20m'),
 }
 
 const POMODORO_STATUS = {
