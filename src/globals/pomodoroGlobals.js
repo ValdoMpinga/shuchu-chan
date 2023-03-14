@@ -1,9 +1,15 @@
 const  ms = require('ms');
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const CLIENT = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+const ALLOWED_CHANNELS = 'developers-test-ground'
+
 
 const POMODORO_TIMING_DETAILS = {
     WORK_DURATION: ms('25m'),
-    SHORT_BREAK_DURATION: ms('5m'),
-    LONG_BREAK_DURATION: ms('20m'),
+    SHORT_BREAK_DURATION: ms('25m'),
+    LONG_BREAK_DURATION: ms('25m'),
 }
 
 const POMODORO_STATUS = {
@@ -36,4 +42,4 @@ let pomodoroActivityDetails = {
     currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS }
