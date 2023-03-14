@@ -22,9 +22,9 @@ for (const file of commandFiles)
   CLIENT.commands.set(command.data.name, command);
 }
 
-client.on('debug', console.log);
-client.on('warn', console.warn);
-client.on('error', console.error);
+CLIENT.on('debug', console.log);
+CLIENT.on('warn', console.warn);
+CLIENT.on('error', console.error);
 
 CLIENT.once(Events.ClientReady, () =>
 {
