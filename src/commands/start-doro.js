@@ -1,4 +1,4 @@
-const { SlashCommandBuilder} = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 
 const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS } = require('../globals/pomodoroGlobals')
@@ -42,21 +42,20 @@ try
             {
                 await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
 
-                startTimer()
-
-
-                pomodoroActivityDetails.followUpTimerintervalId = setTimeout(async () =>
-                {
-                    const channel = CLIENT.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
-
-                    if (channel)
+                startTimer().then(
+                    () =>
                     {
-                        channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining break time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
-                    } else
-                    {
-                        console.log('Could not find channel');
+                        const channel = CLIENT.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
+
+                        if (channel)
+                        {
+                            channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
+                        } else
+                        {
+                            console.log('Could not find channel');
+                        }
                     }
-                }, pomodoroActivityDetails.remainingTime + ms('5s'))
+                )
             }
         },
     };

@@ -3,7 +3,8 @@ const { Client, GatewayIntentBits } = require("discord.js");
 
 const CLIENT = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const ALLOWED_CHANNELS = 'developers-test-ground'
+// const ALLOWED_CHANNELS = 'developers-test-ground'
+const ALLOWED_CHANNELS = 'pomodoro'
 
 
 const POMODORO_TIMING_DETAILS = {
