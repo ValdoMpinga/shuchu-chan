@@ -3,11 +3,13 @@ dotenv.config();
 
 const fs = require("fs");
 const path = require("path");
-const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
+const {  Collection, Events } = require("discord.js");
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const { CLIENT } = require('./globals/pomodoroGlobals')
 
-client.commands = new Collection();
+
+
+CLIENT.commands = new Collection();
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs
   .readdirSync(commandsPath)
@@ -17,25 +19,27 @@ for (const file of commandFiles)
 {
   const filePath = path.join(commandsPath, file);
   const command = require(filePath);
-  client.commands.set(command.data.name, command);
+  CLIENT.commands.set(command.data.name, command);
 }
 
-client.on('debug', console.log);
-client.on('warn', console.warn);
-client.on('error', console.error);
+// console.log(CLIENT.commands);
 
-client.once(Events.ClientReady, () =>
+// CLIENT.on('debug', console.log);
+// CLIENT.on('warn', console.warn);
+// CLIENT.on('error', console.error);
+
+CLIENT.once(Events.ClientReady, () =>
 {
   console.log("Ready!");
 });
 
-client.on(Events.InteractionCreate, async (interaction) =>
+CLIENT.on(Events.InteractionCreate, async (interaction) =>
 {
   try
   {
     if (!interaction.isChatInputCommand()) return;
 
-    const command = client.commands.get(interaction.commandName);
+    const command = CLIENT.commands.get(interaction.commandName);
 
     if (!command) return;
 
@@ -68,7 +72,7 @@ client.on(Events.InteractionCreate, async (interaction) =>
 try
 {
 
-  client.login(process.env.DISCORD_TOKEN);
+  CLIENT.login(process.env.DISCORD_TOKEN);
 } catch (e)
 {
   console.log(e);
