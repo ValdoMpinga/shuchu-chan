@@ -3,10 +3,8 @@ const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
 const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
 
-
 try
 {
-
     module.exports = {
         data: new SlashCommandBuilder()
             .setName('pause-doro')

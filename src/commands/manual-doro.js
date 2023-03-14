@@ -5,7 +5,6 @@ const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
 
 try
 {
-
     module.exports = {
         data: new SlashCommandBuilder()
             .setName('manual-doro')
