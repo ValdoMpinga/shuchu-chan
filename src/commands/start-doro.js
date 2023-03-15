@@ -45,15 +45,22 @@ try
                 startTimer().then(
                     () =>
                     {
-                        const channel = CLIENT.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
+                        try
+                        {
+                            const guild = CLIENT.guilds.cache.get(process.env.GUILD_ID);
+                            const channel = guild.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
 
-                        if (channel)
+
+                            if (channel)
+                            {
+                                console.log("Replying end of the timer to the channel");
+                                channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
+                            }
+                        } catch (e)
                         {
-                            channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
-                        } else
-                        {
-                            console.log('Could not find channel');
+                            console.log(e);
                         }
+                       
                     }
                 )
             }

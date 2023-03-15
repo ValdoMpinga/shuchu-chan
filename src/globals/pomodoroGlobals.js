@@ -8,9 +8,9 @@ const ALLOWED_CHANNELS = 'pomodoro'
 
 
 const POMODORO_TIMING_DETAILS = {
-    WORK_DURATION: ms('25m'),
-    SHORT_BREAK_DURATION: ms('5m'),
-    LONG_BREAK_DURATION: ms('20m'),
+    WORK_DURATION: ms('10s'),
+    SHORT_BREAK_DURATION: ms('5s'),
+    LONG_BREAK_DURATION: ms('4s'),
 }
 
 const POMODORO_STATUS = {
