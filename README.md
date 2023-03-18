@@ -12,7 +12,6 @@ Shūchū-chan is a Discord bot that helps you stay focused and organized with Po
 | _status-doro_ | Displays the current Pomodoro status, including the current activity (Work/Break time), whether the timer is paused or not, the remaining time, and the period. |
 | _reset-doro_  | Resets the Pomodoro timer.                                                                                                                                      |
 | _manual-doro_ | Displays the manual on how to use the bot.                                                                                                                      |
-
 ## Future Improvements ##
 
 Shūchū-chan is an ongoing project, and we are committed to improving it. We plan to add more features and correct existing bugs. One crucial feature we plan to add is to play an alarm sound on the voice channel when the pomodoro ends.
