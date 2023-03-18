@@ -50,7 +50,6 @@ try
                             const guild = CLIENT.guilds.cache.get(process.env.GUILD_ID);
                             const channel = guild.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
 
-
                             if (channel)
                             {
                                 console.log("Replying end of the timer to the channel");
