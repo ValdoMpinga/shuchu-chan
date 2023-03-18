@@ -5,7 +5,6 @@ const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS } = require('../global
 const startTimer = require('../helpers/pomodoroHelpers/startTimer')
 const replyEmbed = require('../embeds/reply-embeds')
 const pomodoroStateIdentifier = require('../helpers/pomodoroHelpers/pomodoroStateIdentifier')
-const ms = require('ms');
 
 try
 {
@@ -59,7 +58,7 @@ try
                         {
                             console.log(e);
                         }
-                       
+
                     }
                 )
             }
@@ -69,4 +68,3 @@ try
 {
     console.log(e);
 }
-
