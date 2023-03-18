@@ -1,4 +1,4 @@
-# Shūchū-chan Pomodoro Bot #
+# Shūchū-chan, a Discord Pomodoro Bot #
 
 Shūchū-chan is a Discord bot that helps you stay focused and organized with Pomodoro timers. It was developed by a group of friends who love productivity and anime.
 
