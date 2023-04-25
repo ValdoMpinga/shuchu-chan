@@ -40,28 +40,7 @@ try
                 }
             } else
             {
-                await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
-
-                startTimer().then(
-                    () =>
-                    {
-                        try
-                        {
-                            const guild = CLIENT.guilds.cache.get(process.env.GUILD_ID);
-                            const channel = guild.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
-
-                            if (channel)
-                            {
-                                console.log("Replying end of the timer to the channel");
-                                channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
-                            }
-                        } catch (e)
-                        {
-                            console.log(e);
-                        }
-                       
-                    }
-                )
+                startDoroInteraction()
             }
         },
     };
@@ -70,3 +49,31 @@ try
     console.log(e);
 }
 
+async function startDoroInteraction()
+{
+    await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
+
+    startTimer().then(
+        () =>
+        {
+            try
+            {
+                const guild = CLIENT.guilds.cache.get(process.env.GUILD_ID);
+                const channel = guild.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
+
+                if (channel)
+                {
+                    console.log("Replying end of the timer to the channel");
+                    channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
+                }
+            } catch (e)
+            {
+                console.log(e);
+            }
+
+        }
+    )
+}
+
+
+module.exports = {}
