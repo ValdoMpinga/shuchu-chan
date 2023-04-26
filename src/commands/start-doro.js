@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS } = require('../globals/pomodoroGlobals')
+const startDoroInteraction = require('../helpers/pomodoroHelpers/startDoroInteraction')
 const startTimer = require('../helpers/pomodoroHelpers/startTimer')
 const replyEmbed = require('../embeds/reply-embeds')
 const pomodoroStateIdentifier = require('../helpers/pomodoroHelpers/pomodoroStateIdentifier')
@@ -40,7 +41,7 @@ try
                 }
             } else
             {
-                startDoroInteraction()
+                startDoroInteraction(interaction)
             }
         },
     };
@@ -48,32 +49,3 @@ try
 {
     console.log(e);
 }
-
-async function startDoroInteraction()
-{
-    await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
-
-    startTimer().then(
-        () =>
-        {
-            try
-            {
-                const guild = CLIENT.guilds.cache.get(process.env.GUILD_ID);
-                const channel = guild.channels.cache.find(channel => channel.name === ALLOWED_CHANNELS);
-
-                if (channel)
-                {
-                    console.log("Replying end of the timer to the channel");
-                    channel.send({ embeds: [replyEmbed(pomodoroActivityDetails.currentPomodoroStatus, `Remaining activity time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)] });
-                }
-            } catch (e)
-            {
-                console.log(e);
-            }
-
-        }
-    )
-}
-
-
-module.exports = {}
