@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { POMODORO_SKIP_CODES, pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
+const { POMODORO_SKIP_CODES, pomodoroActivityDetails, INTENTS } = require('../globals/pomodoroGlobals')
 const pomodoroStatusUpdater = require('../helpers/pomodoroHelpers/pomodoroStatusUpdater')
 const pauseTimer = require('../helpers/pomodoroHelpers/pauseTimer')
 const pomodoroPeriodSkipper = require('../helpers/pomodoroHelpers/pomodoroPeriodSkipper')
@@ -29,16 +29,25 @@ try
         ,
         async execute(interaction)
         {
+            if (!pomodoroActivityDetails.isPomodoroActive)
+                await interaction.reply("Pomodoro must be active to be able to skip sessions!")
+            else
+            {
+                
+            
             let selectedOption = interaction.options.getInteger('target')
+            let numberOfPeriodsToSkip = 0
 
             switch (selectedOption)
             {
+
                 case POMODORO_SKIP_CODES.CURRENT:
                     if (pomodoroActivityDetails.isPomodoroActive && pomodoroActivityDetails.pomodoroCounter < 8)
                     {
                         if (pomodoroActivityDetails.isTimerPaused)
                         {
                             pomodoroActivityDetails.pomodoroCounter++
+
                             pomodoroStatusUpdater()
 
                             await interaction.reply('Pomodoro section skipped successfully!')
@@ -64,61 +73,72 @@ try
                             pomodoroActivityDetails.pomodoroCounter++
                             pomodoroStatusUpdater()
 
-                            // await interaction.reply('Pomodoro section skipped successfully!')
+                            await interaction.reply('Pomodoro section skipped successfully!')
 
-                            startDoroInteraction(interaction)
+                            startDoroInteraction(INTENTS.SKIP_AND_START)
                         } else
                         {
                             pauseTimer()
                             pomodoroActivityDetails.pomodoroCounter++
                             pomodoroStatusUpdater()
-                            // await interaction.reply('Pomodoro section skipped successfully!')
-                            startDoroInteraction(interaction)
 
+                            await interaction.reply('Pomodoro section skipped successfully!')
+
+                            startDoroInteraction(INTENTS.SKIP_AND_START)
                         }
                     } else if (pomodoroActivityDetails.pomodoroCounter === 8)
                     {
                         pomodoroActivityDetails.pomodoroCounter = 1
                         pomodoroStatusUpdater()
-                            // await interaction.reply('Pomodoro section skipped successfully!')
-                        startDoroInteraction(interaction)
+
+                        await interaction.reply('Pomodoro section skipped successfully!')
+                        startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     }
                     break;
                 case POMODORO_SKIP_CODES.ONE_PERIOD:
-                    let period_one_output = pomodoroPeriodSkipper(selectedOption)
+                    numberOfPeriodsToSkip = 1
+                    let period_one_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
                     await interaction.reply(period_one_output)
 
                     break;
                 case POMODORO_SKIP_CODES.ONE_PERIOD_AND_START:
-                    let _period_one_output = pomodoroPeriodSkipper(selectedOption)
-                    // await interaction.reply(_period_one_output)
-                    startDoroInteraction(interaction)
+                    numberOfPeriodsToSkip = 1
+                    let _period_one_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+
+                    await interaction.reply(_period_one_output)
+                    startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
                 case POMODORO_SKIP_CODES.TWO_PERIODS:
-                    let period_two_output = pomodoroPeriodSkipper(selectedOption)
+                    numberOfPeriodsToSkip = 2
+                    let period_two_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
                     await interaction.reply(period_two_output)
 
                     break;
-                case POMODORO_SKIP_CODES.TWO_PERIODS:
-                    let _period_two_output = pomodoroPeriodSkipper(selectedOption)
-                    // await interaction.reply(period_two_output)
-                    startDoroInteraction(interaction)
+                case POMODORO_SKIP_CODES.TWO_PERIODS_AND_START:
+                    numberOfPeriodsToSkip = 2
+                    let _period_two_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+
+                    await interaction.reply(_period_two_output)
+                    startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
                 case POMODORO_SKIP_CODES.THREE_PERIODS:
-                    let period_three_output = pomodoroPeriodSkipper(selectedOption)
+                    numberOfPeriodsToSkip = 3
+                    let period_three_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
                     await interaction.reply(period_three_output)
 
                     break;
-                case POMODORO_SKIP_CODES.THREE_PERIODS:
-                    let _period_three_output = pomodoroPeriodSkipper(selectedOption)
-                    // await interaction.reply(period_three_output)
-                    startDoroInteraction(interaction)
+                case POMODORO_SKIP_CODES.THREE_PERIODS_AND_START:
+                    numberOfPeriodsToSkip = 3
+                    let _period_three_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    await interaction.reply(_period_three_output)
+                    startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
             }
+        }
         },
     };
 

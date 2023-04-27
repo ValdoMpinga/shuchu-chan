@@ -1,12 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const formatTime = require('../helpers/pomodoroHelpers/formatTime')
-const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS } = require('../globals/pomodoroGlobals')
+const { pomodoroActivityDetails, CLIENT, INTENTS } = require('../globals/pomodoroGlobals')
 const startDoroInteraction = require('../helpers/pomodoroHelpers/startDoroInteraction')
-const startTimer = require('../helpers/pomodoroHelpers/startTimer')
 const replyEmbed = require('../embeds/reply-embeds')
+const formatTime = require('../helpers/pomodoroHelpers/formatTime')
 const pomodoroStateIdentifier = require('../helpers/pomodoroHelpers/pomodoroStateIdentifier')
-const ms = require('ms');
 
 try
 {
@@ -41,7 +39,9 @@ try
                 }
             } else
             {
-                startDoroInteraction(interaction)
+                await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
+
+                startDoroInteraction(INTENTS.START)
             }
         },
     };

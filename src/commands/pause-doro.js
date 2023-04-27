@@ -11,8 +11,13 @@ try
             .setDescription('Pauses the pomodoro'),
         async execute(interaction)
         {
-            pauseTimer()
-            await interaction.reply(`Timer paused, remaining time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)
+            if (!pomodoroActivityDetails.isPomodoroActive)
+                await interaction.reply("Pomodoro must be active to be able to pause sessions!")
+            else
+            {
+                pauseTimer()
+                await interaction.reply(`Timer paused, remaining time: ${formatTime(pomodoroActivityDetails.remainingTime)}`)
+            }
         },
     };
 } catch (e)
