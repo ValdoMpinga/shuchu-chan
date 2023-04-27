@@ -11,6 +11,14 @@ const POMODORO_TIMING_DETAILS = {
     LONG_BREAK_DURATION: ms('20m'),
 }
 
+// const POMODORO_TIMING_DETAILS = {
+//     WORK_DURATION: ms('4s'),
+//     SHORT_BREAK_DURATION: ms('3s'),
+//     LONG_BREAK_DURATION: ms('5s'),
+// }
+
+const INACTIVITY_ALARM_TIMEOUT = ms('2m')
+
 const POMODORO_STATUS = {
     WORK_TIME_STATUS: "Time to be productive!",
     SHORT_BREAK_STATUS: "Time for a short break, you deserve it!",
@@ -46,8 +54,9 @@ let pomodoroActivityDetails = {
     pomodoroCounter: 1,
     pomodoroTimerintervalId: null,
     followUpTimerintervalId: null,
+    inactivityAlarmTimerId: null,
     remainingTime: POMODORO_TIMING_DETAILS.WORK_DURATION,
     currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS, INACTIVITY_ALARM_TIMEOUT }

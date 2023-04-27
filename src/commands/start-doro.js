@@ -41,6 +41,8 @@ try
             {
                 await interaction.reply({ embeds: [replyEmbed("Timer started, remaining time: " + formatTime(pomodoroActivityDetails.remainingTime), pomodoroStateIdentifier())] });
 
+                clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+
                 startDoroInteraction(INTENTS.START)
             }
         },

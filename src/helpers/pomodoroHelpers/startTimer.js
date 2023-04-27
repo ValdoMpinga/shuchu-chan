@@ -5,8 +5,6 @@ const ms = require('ms');
 
 module.exports = function startTimer()
 {
-    console.log("in");
-
     return new Promise((resolve, reject) =>
     {
         try
