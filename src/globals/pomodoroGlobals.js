@@ -24,11 +24,20 @@ const POMODORO_PERIODS = {
     FORTH_PERIOD: "forth period",
 }
 
+const INTENTS = {
+    SKIP_AND_START: "skip and start",
+    START: "start",
+}
+
 const POMODORO_SKIP_CODES = {
     CURRENT: 0,
-    ONE_PERIOD: 1,
-    TWO_PERIODS: 2,
-    THREE_PERIODS: 3
+    CURRENT_AND_START: 1,
+    ONE_PERIOD: 2,
+    ONE_PERIOD_AND_START: 3,
+    TWO_PERIODS: 4,
+    TWO_PERIODS_AND_START: 5,
+    THREE_PERIODS: 6,
+    THREE_PERIODS_AND_START: 7
 }
 
 let pomodoroActivityDetails = {
@@ -41,4 +50,4 @@ let pomodoroActivityDetails = {
     currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS }

@@ -18,8 +18,6 @@ try
 
             } else
                 await interaction.reply("You cant reset a pomodoro that isnt currently active.")
-
-
         },
     };
 } catch (e)
