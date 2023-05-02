@@ -3,19 +3,19 @@ const { Client, GatewayIntentBits } = require("discord.js");
 
 const CLIENT = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const ALLOWED_CHANNELS = 'pomodoro'
-
-// const POMODORO_TIMING_DETAILS = {
-//     WORK_DURATION: ms('25m'),
-//     SHORT_BREAK_DURATION: ms('5m'),
-//     LONG_BREAK_DURATION: ms('20m'),
-// }
+const ALLOWED_CHANNELS = 'group-pomodoro'
 
 const POMODORO_TIMING_DETAILS = {
-    WORK_DURATION: ms('4s'),
-    SHORT_BREAK_DURATION: ms('3s'),
-    LONG_BREAK_DURATION: ms('5s'),
+    WORK_DURATION: ms('25m'),
+    SHORT_BREAK_DURATION: ms('5m'),
+    LONG_BREAK_DURATION: ms('20m'),
 }
+
+// const POMODORO_TIMING_DETAILS = {
+//     WORK_DURATION: ms('4s'),
+//     SHORT_BREAK_DURATION: ms('3s'),
+//     LONG_BREAK_DURATION: ms('5s'),
+// }
 
 const INACTIVITY_ALARM_TIMEOUT = ms('2m')
 

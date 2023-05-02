@@ -118,15 +118,15 @@ try
                     startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
-                case POMODORO_SKIP_CODES.THREE_PERIODS:
+            case POMODORO_SKIP_CODES.THREE_PERIODS:
                     let period_three_output = pomodoroPeriodSkipper(3)
                     await interaction.reply(period_three_output)
 
                     break;
                 case POMODORO_SKIP_CODES.THREE_PERIODS_AND_START:
                     let _period_three_output = pomodoroPeriodSkipper(3)
-                    await interaction.reply(_period_three_output)
                     startDoroInteraction(INTENTS.SKIP_AND_START)
+                    await interaction.reply(_period_three_output)
 
                     break;
             }
