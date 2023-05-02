@@ -14,6 +14,9 @@ try
             if (pomodoroActivityDetails.isPomodoroActive)
             {
                 pomodoroReseter()
+
+                clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+
                 await interaction.reply("Pomodoro has been reset!")
 
             } else
@@ -24,4 +27,3 @@ try
 {
     console.log(e);
 }
-

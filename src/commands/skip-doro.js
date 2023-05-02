@@ -36,11 +36,9 @@ try
                 
             
             let selectedOption = interaction.options.getInteger('target')
-            let numberOfPeriodsToSkip = 0
 
             switch (selectedOption)
             {
-
                 case POMODORO_SKIP_CODES.CURRENT:
                     if (pomodoroActivityDetails.isPomodoroActive && pomodoroActivityDetails.pomodoroCounter < 8)
                     {
@@ -97,42 +95,36 @@ try
                     }
                     break;
                 case POMODORO_SKIP_CODES.ONE_PERIOD:
-                    numberOfPeriodsToSkip = 1
-                    let period_one_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let period_one_output = pomodoroPeriodSkipper(1)
                     await interaction.reply(period_one_output)
 
                     break;
                 case POMODORO_SKIP_CODES.ONE_PERIOD_AND_START:
-                    numberOfPeriodsToSkip = 1
-                    let _period_one_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let _period_one_output = pomodoroPeriodSkipper(1)
 
                     await interaction.reply(_period_one_output)
                     startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
                 case POMODORO_SKIP_CODES.TWO_PERIODS:
-                    numberOfPeriodsToSkip = 2
-                    let period_two_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let period_two_output = pomodoroPeriodSkipper(2)
                     await interaction.reply(period_two_output)
 
                     break;
                 case POMODORO_SKIP_CODES.TWO_PERIODS_AND_START:
-                    numberOfPeriodsToSkip = 2
-                    let _period_two_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let _period_two_output = pomodoroPeriodSkipper(2)
 
                     await interaction.reply(_period_two_output)
                     startDoroInteraction(INTENTS.SKIP_AND_START)
 
                     break;
                 case POMODORO_SKIP_CODES.THREE_PERIODS:
-                    numberOfPeriodsToSkip = 3
-                    let period_three_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let period_three_output = pomodoroPeriodSkipper(3)
                     await interaction.reply(period_three_output)
 
                     break;
                 case POMODORO_SKIP_CODES.THREE_PERIODS_AND_START:
-                    numberOfPeriodsToSkip = 3
-                    let _period_three_output = pomodoroPeriodSkipper(numberOfPeriodsToSkip)
+                    let _period_three_output = pomodoroPeriodSkipper(3)
                     await interaction.reply(_period_three_output)
                     startDoroInteraction(INTENTS.SKIP_AND_START)
 
