@@ -48,6 +48,11 @@ const POMODORO_SKIP_CODES = {
     THREE_PERIODS_AND_START: 7
 }
 
+const POMODORO_RESET_CODES = {
+    NO: 0,
+    YES: 1
+}
+
 let pomodoroActivityDetails = {
     isTimerPaused: true,
     isPomodoroActive: false,
@@ -59,4 +64,4 @@ let pomodoroActivityDetails = {
     currentPomodoroStatus: POMODORO_STATUS.WORK_TIME_STATUS
 }
 
-module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS, INACTIVITY_ALARM_TIMEOUT }
+module.exports = { POMODORO_TIMING_DETAILS, POMODORO_PERIODS, POMODORO_STATUS, POMODORO_SKIP_CODES, pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS, INACTIVITY_ALARM_TIMEOUT, POMODORO_RESET_CODES }

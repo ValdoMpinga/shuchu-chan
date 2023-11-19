@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const {  pomodoroActivityDetails } = require('../globals/pomodoroGlobals')
+const { pomodoroActivityDetails, POMODORO_RESET_CODES } = require('../globals/pomodoroGlobals')
 const pomodoroReseter = require('../helpers/pomodoroHelpers/pomodoroReseter')
 
 
@@ -8,16 +8,30 @@ try
     module.exports = {
         data: new SlashCommandBuilder()
             .setName('reset-doro')
-            .setDescription('Resets the pomodoro'),
+            .setDescription('Resets the pomodoro')
+            .addIntegerOption(option =>
+                option.setName('confirmation')
+                    .setRequired(true)
+                    .addChoices(
+                        { name: 'No', value: 0 },
+                        { name: 'Yes', value: 1 }
+                    )
+            )
+        ,
         async execute(interaction)
         {
             if (pomodoroActivityDetails.isPomodoroActive)
             {
-                pomodoroReseter()
+                let selectedOption = interaction.options.getInteger('confirmation')
 
-                clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+                if (selectedOption == POMODORO_RESET_CODES.YES)
+                {
+                    pomodoroReseter()
 
-                await interaction.reply("Pomodoro has been reset!")
+                    clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+
+                    await interaction.reply("Pomodoro has been reset!")
+                } 
 
             } else
                 await interaction.reply("You cant reset a pomodoro that isnt currently active.")
