@@ -17,9 +17,17 @@ try
 
   for (const file of commandFiles)
   {
-    const command = require(`./commands/${file}`);
-    commands.push(command.data.toJSON());
+    try
+    {
+      const command = require(`./commands/${file}`);
+      commands.push(command.data.toJSON());
+      console.log(`Successfully loaded command from ${file}`);
+    } catch (error)
+    {
+      console.error(`Error loading command from ${file}: ${error.message}`);
+    }
   }
+
 } catch (e)
 {
   console.log(e);
