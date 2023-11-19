@@ -28,6 +28,10 @@ module.exports = {
                     pomodoroReseter();
                     clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
                     await interaction.reply("Pomodoro has been reset!");
+                } else
+                {
+                    await interaction.reply("Pomodoro was NOT been reset!");
+
                 }
             } else
             {
