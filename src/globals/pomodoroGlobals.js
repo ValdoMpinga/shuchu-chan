@@ -6,9 +6,9 @@ const CLIENT = new Client({ intents: [GatewayIntentBits.Guilds] });
 const ALLOWED_CHANNELS = 'pomodoro'
 
 const POMODORO_TIMING_DETAILS = {
-    WORK_DURATION: ms('5s'),
-    SHORT_BREAK_DURATION: ms('5s'),
-    LONG_BREAK_DURATION: ms('5s'),
+    WORK_DURATION: ms('25m'),
+    SHORT_BREAK_DURATION: ms('5m'),
+    LONG_BREAK_DURATION: ms('20m'),
 }
 
 // const POMODORO_TIMING_DETAILS = {

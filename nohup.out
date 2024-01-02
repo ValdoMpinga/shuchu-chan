@@ -1,0 +1,5 @@
+28fc5aaf66b48c78af64b64fc085d440bb44be2c4d77f391c699ef77241ad12f
+docker: Cannot connect to the Docker daemon at unix:///Users/valdo/.docker/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
+docker: Cannot connect to the Docker daemon at unix:///Users/valdo/.docker/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
