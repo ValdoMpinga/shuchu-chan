@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "Discord pomodoro app",
   "main": "index.js",
-  "engines": {
-    "node": "19.5.0"
-  },
   "scripts": {
     "test": "mocha",
     "start": "concurrently \"node src/index.js\"",
-    "deploy": "concurrently \"node src/deploy-commands.js\" \"node src/index.js\""
+    "deploy": "concurrently \"node src/deploy-commands.js\""
   },
   "author": "Valdo Mpinga && Niel Ganancio",
   "license": "ISC",
