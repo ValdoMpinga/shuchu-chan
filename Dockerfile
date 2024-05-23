@@ -17,7 +17,7 @@ COPY . .
 RUN npm run deploy
 
 # Expose the port your app runs on
-EXPOSE 8080
+EXPOSE 3120
 
 # Define the command to run your app
 CMD ["npm", "start"]

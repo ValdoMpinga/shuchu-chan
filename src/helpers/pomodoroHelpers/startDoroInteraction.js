@@ -1,7 +1,9 @@
-const formatTime = require('../pomodoroHelpers/formatTime')
-const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS, POMODORO_STATUS,INACTIVITY_ALARM_TIMEOUT } = require('../../globals/pomodoroGlobals')
-const startTimer = require('../pomodoroHelpers/startTimer')
-const replyEmbed = require('../../embeds/reply-embeds')
+const formatTime = require('../pomodoroHelpers/formatTime');
+const { pomodoroActivityDetails, CLIENT, ALLOWED_CHANNELS, INTENTS, POMODORO_STATUS, INACTIVITY_ALARM_TIMEOUT } = require('../../globals/pomodoroGlobals');
+let { INACTIVITY_ALARM_COUNTER } = require('../../globals/pomodoroGlobals');
+const startTimer = require('../pomodoroHelpers/startTimer');
+const replyEmbed = require('../../embeds/reply-embeds');
+const pomodoroReseter = require('./pomodoroReseter');
 
 module.exports = async function startDoroInteraction(intent)
 {
@@ -25,8 +27,7 @@ module.exports = async function startDoroInteraction(intent)
             });
             break;
     }
-}
-
+};
 
 async function sendEndOfTimerMessage(channel)
 {
@@ -39,11 +40,28 @@ async function sendEndOfTimerMessage(channel)
 
             if (pomodoroActivityDetails.currentPomodoroStatus === POMODORO_STATUS.WORK_TIME_STATUS && pomodoroActivityDetails.isTimerPaused)
             {
-                pomodoroActivityDetails.inactivityAlarmTimerId = setInterval(() =>
+                if (INACTIVITY_ALARM_COUNTER.value == 5)
                 {
-                    channel.send("Don't forget to turn on the timer!");
+                    channel.send("Pomodoro is being reset due to max warning limit (5 times)");
+                    pomodoroReseter();
+                    clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+                } else
+                {
+                    console.log(`Current INACTIVITY_ALARM_COUNTER: ${INACTIVITY_ALARM_COUNTER.value}`);
+                    pomodoroActivityDetails.inactivityAlarmTimerId = setInterval(() =>
+                    {
+                        INACTIVITY_ALARM_COUNTER.value++;
+                        console.log(`Incremented INACTIVITY_ALARM_COUNTER: ${INACTIVITY_ALARM_COUNTER.value}`);
+                        channel.send("Don't forget to turn on the timer!");
 
-                }, INACTIVITY_ALARM_TIMEOUT)
+                        if (INACTIVITY_ALARM_COUNTER.value == 5)
+                        {
+                            channel.send("Pomodoro is being reset due to max warning limit (5 times)");
+                            pomodoroReseter();
+                            clearInterval(pomodoroActivityDetails.inactivityAlarmTimerId);
+                        }
+                    }, INACTIVITY_ALARM_TIMEOUT);
+                }
             }
         }
     } catch (e)
