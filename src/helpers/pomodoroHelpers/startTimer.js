@@ -2,6 +2,7 @@ const { pomodoroActivityDetails } = require('../../globals/pomodoroGlobals')
 const formatTime = require('../../helpers/pomodoroHelpers/formatTime')
 const pomodoroStatusUpdater = require('../../helpers/pomodoroHelpers/pomodoroStatusUpdater')
 const ms = require('ms');
+let { INACTIVITY_ALARM_COUNTER } = require('../../globals/pomodoroGlobals');
 
 module.exports = function startTimer()
 {
@@ -13,6 +14,7 @@ module.exports = function startTimer()
             pomodoroActivityDetails.isPomodoroActive = true
             pomodoroActivityDetails.isTimerPaused = false
             let timeInSeconds = 0
+            INACTIVITY_ALARM_COUNTER.value = 0
 
             // Execute the interval function every 1 second (1000 milliseconds)
             pomodoroActivityDetails.pomodoroTimerintervalId = setInterval(() =>
